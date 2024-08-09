@@ -1,6 +1,9 @@
 # Updated products dictionary with quantity and cost
 from random import choice
+from art import logo
 
+print(logo)
+print("Welcome to Vending Machine")
 
 products = {
     "1": {"chocolate": {"quantity": 50, "cost": 20}},
@@ -83,19 +86,21 @@ def process_order(user_choice):
 
 def vending_machine():
     """Main function to run the vending machine."""
-    user_choice = input("Press the number button for: 1. Chocolate 2. Juice 3. Cola 4. Goodies or type 'report' to check the report: ")
-    print()
+    while True:
+        print()
+        user_choice = input("Press the number button for: 1. Chocolate 2. Juice 3. Cola 4. Goodies.. or type 'report' to check the quantities: ")
+        print()
 
-    if user_choice == "report":
-        check_report()
-    elif user_choice in products:
-        item = products[user_choice]
-        product_name, details = list(item.items())[0]
-        price = details['cost']
-        print(f"You selected: {product_name} with a price of {price}sek")
-        process_order(user_choice)
-    else:
-        print("Invalid selection.")
+        if user_choice == "report":
+            check_report()
+        elif user_choice in products:
+            item = products[user_choice]
+            product_name, details = list(item.items())[0]
+            price = details['cost']
+            print(f"You selected: {product_name} with a price of {price}sek")
+            process_order(user_choice)
+        else:
+            print("Invalid selection.")
 
 # Run the vending machine
 vending_machine()
